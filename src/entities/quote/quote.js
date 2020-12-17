@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server");
 
-const typeDefs = gql`
+const quoteType = gql`
   type Quote {
     id: ID!
     phrase: String!
@@ -30,4 +30,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+module.exports = quoteType;
