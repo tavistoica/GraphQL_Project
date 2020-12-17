@@ -1,8 +1,8 @@
 const { ApolloServer } = require("apollo-server");
-const typeDefs = require("./graphql/schema");
-const resolvers = require("./graphql/resolvers");
+const typeDefs = require("./src/graphql/schema");
+const resolvers = require("./src/graphql/resolvers");
 const mongoose = require("mongoose");
-const { mongoURL } = require("./config");
+const { mongoURL } = require("./src/config");
 
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -12,5 +12,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`> Server ready at ${url}`);
 });
