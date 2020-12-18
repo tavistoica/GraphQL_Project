@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`quotesByquoter Query use case Test 1`] = `
+exports[`deleteQuote Mutation use case Test 1`] = `
 Object {
   "data": Object {
-    "quotesByquoter": Array [
+    "quotes": Array [
       Object {
         "phrase": "O vorba mare",
+        "quoter": "mafiotu",
       },
     ],
   },

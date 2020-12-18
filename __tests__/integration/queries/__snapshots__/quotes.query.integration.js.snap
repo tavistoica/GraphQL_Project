@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`returns all the tests in the database 1`] = `
+exports[`quotes Query use case Test 1`] = `
 Object {
   "data": Object {
     "quotes": Array [
