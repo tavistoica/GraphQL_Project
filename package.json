@@ -6,6 +6,7 @@
   "dependencies": {
     "apollo-server": "^2.19.0",
     "apollo-server-express": "^1.4.0",
+    "apollo-server-testing": "^2.19.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "graphql": "^15.4.0",
@@ -14,10 +15,13 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "jest --runInBand",
+    "start": "node src/bin/start.command.js"
   },
   "author": "",
   "license": "ISC"

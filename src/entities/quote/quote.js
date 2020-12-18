@@ -19,7 +19,7 @@ const quoteType = gql`
     quotesByquoter(quoter: String!): [Quote]!
   }
   type Mutation {
-    addQuote(quote: QuoteAdd!): QuoteUpdateResponse!
+    addQuote(input: QuoteAdd!): QuoteUpdateResponse!
     editQuote(id: ID!, quote: QuoteEdit!): QuoteUpdateResponse!
     deleteQuote(id: ID!): QuoteUpdateResponse!
   }

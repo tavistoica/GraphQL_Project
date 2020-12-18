@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns all the tests in the database 1`] = `
+Object {
+  "data": Object {
+    "quotes": Array [
+      Object {
+        "phrase": "smenarie",
+        "quoter": "mafiotu",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
