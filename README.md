@@ -1,26 +1,31 @@
-GraphQL server made with Express.js with MongoDB as database solution
+# GraphQL & Node.JS coding exercise
 
-1. npm install
-2. install mongodb on port 27017
-3. npm start
-4. Access http://localhost:4000
+An Apollo GraphQL server developed in Node.js. The project is structured in a scalable manner.
 
-Problem:
+### Tech
 
-User Story - Summary
-as a User using GraphQL API I need to be able to query and edit a set of quotes
-Acceptance Criteria
-• Create the GraphQL Server for Your Node.js App
-• Create a schema with a type Quote that has id, phrase and quoter as attributes
-• Create the following queries in the Quote schema:
-o quotes – retrieve all the stored quotes
-o quotesByquoter – retrieve all the the quote by a specific quote
-• Create the following mutation in the Quote Schema:
-o addQuote
-o editQuote
-o deleteQuote
-• Feel free to store the quotes data in your favourite storage (MySql DB, Redis, Key Value
-store etc.)
-Technical Constraints
-• Using Apollo server
-• Using Node.js
+This project uses a number of open source libraries:
+
+* [node.js](http://nodejs.org) - evented I/O for the backend
+* [apollo-server](https://www.npmjs.com/package/apollo-server) - a community-maintained open-source GraphQL server
+* [apollo-server-test](https://www.npmjs.com/package/apollo-server-testing) - tooling to make testing easier to users of all of the apollo-server integrations
+* [graphql](https://www.npmjs.com/package/graphql) - a query language for APIs created by Facebook.
+* [graphql-tools](https://www.npmjs.com/package/graphql-tools) - a set of utilities for faster development of GraphQL Schemas
+* [graphql-import](https://www.npmjs.com/package/graphql-import) - a tool for reading .graphql extension
+* [mongodb](https://www.npmjs.com/package/mongodb) - a library used to communicate with the MongoDB database
+* [mongoose](https://www.npmjs.com/package/mongoose) - a set of utilities for generating MongoDB schemas
+* [jest]() - a javascript testing library
+
+### Installation
+
+This project requires [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.com/1) to be installed.
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+$ cd GraphQL_Project
+$ npm install
+$ npm start
+```
+### Usage
+To use the server, open the browser and go to http://localhost:4000 for the graphiql interface or send http requests. 
