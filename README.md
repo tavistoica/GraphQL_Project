@@ -29,3 +29,8 @@ $ npm start
 ```
 ### Usage
 To use the server, open the browser and go to http://localhost:4000 for the graphiql interface or send http requests. 
+
+To run the implemented integration tests, run:
+```sh
+jest
+```
