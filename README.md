@@ -15,6 +15,7 @@ This project uses a number of open source libraries:
 - [mongodb](https://www.npmjs.com/package/mongodb) - a library used to communicate with the MongoDB database
 - [mongoose](https://www.npmjs.com/package/mongoose) - a set of utilities for generating MongoDB schemas
 - [jest]() - a javascript testing library
+- [eslint](https://eslint.org) - a static code analyser library - manually configured to work with prettier
 
 ### Installation
 
