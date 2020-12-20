@@ -6,9 +6,7 @@ const {
 
 class Database {
   async bootstrap(options) {
-    console.log("options", options);
     const databaseURL = options && options.url ? options.url : url;
-    console.log(databaseURL);
     await mongoose.connect(databaseURL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -19,5 +17,4 @@ class Database {
     await mongoose.connection.db.dropDatabase();
   }
 }
-
 module.exports = { Database };

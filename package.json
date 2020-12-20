@@ -1,27 +1,25 @@
 {
-  "name": "graphql",
+  "name": "GraphQL_Project",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Apollo GraphQL server developed in Node.js. The project is structured in a scalable manner.",
   "main": "index.js",
   "dependencies": {
     "apollo-server": "^2.19.0",
-    "apollo-server-express": "^1.4.0",
     "apollo-server-testing": "^2.19.0",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
     "graphql": "^15.4.0",
-    "graphql-import": "^1.0.2",
     "graphql-tools": "^7.0.2",
-    "mongodb": "^3.6.3",
     "mongoose": "^5.11.8"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
-    "supertest": "^6.0.1"
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^26.6.3"
   },
   "scripts": {
     "test": "jest --runInBand",
-    "start": "node src/bin/start.command.js"
+    "start": "node src/bin/start.command.js",
+    "lint": "eslint --fix ."
   },
   "author": "",
   "license": "ISC"

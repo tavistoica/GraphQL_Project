@@ -3,7 +3,7 @@ const { gql } = require("apollo-server");
 const {
   database: { url },
 } = require("../../../src/core/config/test.config");
-const Quote = require("../../../src/entities/quote/quote.entity");
+const { Quote } = require("../../../src/entities/quote/quote.entity").default;
 const { Server } = require("../../../src/bootstrap/server.bootstrap");
 const { Database } = require("../../../src/bootstrap/database.bootstrap");
 const { generateID } = require("../../../src/core/helpers/generate-id.helper");
@@ -14,7 +14,7 @@ const database = new Database();
 function getQuery() {
   return gql`
     query getQuotesByQuoter {
-      quotesByquoter(quoter: "mafiotu") {
+      quotesByQuoter(quoter: "Albert Einstein") {
         phrase
       }
     }
@@ -24,8 +24,9 @@ function getQuery() {
 async function createContext() {
   const quote = await createQuote({
     id: generateID,
-    phrase: "O vorba mare",
-    quoter: "mafiotu",
+    phrase:
+      "If you can't explain it to a six year old, you don't understand it yourself.",
+    quoter: "Albert Einstein",
   });
   return {
     getQuotesQuery: getQuery(),
@@ -42,9 +43,12 @@ beforeEach(async () => {
   await database.bootstrap({ url });
   server.bootstrap();
 });
-afterEach(() => database.reset());
+afterEach(async () => {
+  await database.reset();
+  await server.close();
+});
 
-it("quotesByquoter Query use case Test", async () => {
+it("queries 'quotesByQuoter' after adding a quote in the database", async () => {
   const { getQuotesQuery } = await createContext();
   const { query } = createTestClient(server.apolloClient);
   const res = await query({
@@ -52,3 +56,5 @@ it("quotesByquoter Query use case Test", async () => {
   });
   expect(res).toMatchSnapshot();
 });
+
+// un test pentru cand nu exista quoter-ul

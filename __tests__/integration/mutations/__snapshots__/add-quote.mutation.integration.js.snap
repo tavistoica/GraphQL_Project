@@ -1,14 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`deleteQuote Mutation use case Test 1`] = `
+exports[`adds a quote 1`] = `
 Object {
   "data": Object {
-    "quotes": Array [
-      Object {
-        "phrase": "O vorba mare",
-        "quoter": "mafiotu",
-      },
-    ],
+    "addQuote": Object {
+      "phrase": "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+    },
   },
   "errors": undefined,
   "extensions": undefined,

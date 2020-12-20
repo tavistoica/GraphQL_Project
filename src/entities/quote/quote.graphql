@@ -1,4 +1,4 @@
-module.exports = `type Quote {
+type Quote {
   id: ID!
   phrase: String!
   quoter: String!
@@ -16,11 +16,11 @@ input QuoteEdit {
 
 type Query {
   quotes: [Quote]!
-  quotesByquoter(quoter: String!): [Quote]!
+  quotesByQuoter(quoter: String!): [Quote]!
 }
 
 type Mutation {
   addQuote(input: QuoteAdd!): Quote!
-  editQuote(id: ID!, quote: QuoteEdit!): Quote
-  deleteQuote(id: ID!): Quote
-}`;
+  editQuote(id: ID!, input: QuoteEdit!): Quote!
+  deleteQuote(id: ID!): Quote!
+}

@@ -3,8 +3,7 @@ const { gql } = require("apollo-server");
 const {
   database: { url },
 } = require("../../../src/core/config/test.config");
-const Quote = require("../../../src/entities/quote/quote.entity").default;
-const { generateID } = require("../../../src/core/helpers/generate-id.helper");
+const { Quote } = require("../../../src/entities/quote/quote.entity").default;
 const { Server } = require("../../../src/bootstrap/server.bootstrap");
 const { Database } = require("../../../src/bootstrap/database.bootstrap");
 
@@ -13,22 +12,21 @@ const database = new Database();
 
 const quoteID = "123";
 
-function doMutation() {
+function getMutationCorrect() {
   return gql`
     mutation DeleteQuotes {
-      deleteQuote(id: quoteID) {
+      deleteQuote(id: "123") {
         id
       }
     }
   `;
 }
 
-function getQuery() {
+function getMutationNonExistentId() {
   return gql`
-    query getQuotes {
-      quotes {
-        quoter
-        phrase
+    mutation DeleteQuotes {
+      deleteQuote(id: "456") {
+        id
       }
     }
   `;
@@ -40,16 +38,15 @@ function createQuote(quote) {
 }
 
 async function createContext() {
-  const quote = await createQuote({
+  await createQuote({
     id: quoteID,
     phrase:
       "If you can't explain it to a six year old, you don't understand it yourself.",
     quoter: "Albert Einstein",
   });
   return {
-    doQuotesMutation: doMutation(),
-    getQuotesQuery: getQuery(),
-    quote,
+    mutationCorrect: getMutationCorrect(),
+    mutationNonExistentId: getMutationNonExistentId(),
   };
 }
 
@@ -62,22 +59,20 @@ afterEach(async () => {
   await server.close();
 });
 
-it("deleteQuote Mutation use case Test", async () => {
-  const { doQuotesMutation, getQuotesQuery } = await createContext();
-  const { query, mutate } = createTestClient(server.apolloClient);
-  const rees = await mutate({
-    mutation: doQuotesMutation,
+it("deletes a quote", async () => {
+  const { mutationCorrect } = await createContext();
+  const { mutate } = createTestClient(server.apolloClient);
+  const res = await mutate({
+    mutation: mutationCorrect,
   });
-  console.log("rees", rees);
-  const res = await query({
-    query: getQuotesQuery,
-  });
-  console.log("{ doQuotesMutation, getQuotesQuery } ", {
-    doQuotesMutation,
-    getQuotesQuery,
-  });
-  console.log("res", res);
   expect(res).toMatchSnapshot();
 });
 
-// un test pentru cand nu exista quote-ul
+it("checks the delete behavior when quote does not exist", async () => {
+  const { mutationNonExistentId } = await createContext();
+  const { mutate } = createTestClient(server.apolloClient);
+  const res = await mutate({
+    mutation: mutationNonExistentId,
+  });
+  expect(res).toMatchSnapshot();
+});

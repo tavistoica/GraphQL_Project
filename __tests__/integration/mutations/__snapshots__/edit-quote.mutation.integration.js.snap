@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks the edit behavior when quote does not exist 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: Quote does not exist in the database.],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`edits a quote 1`] = `
+Object {
+  "data": Object {
+    "editQuote": Object {
+      "id": "123",
+      "phrase": "It changed!",
+      "quoter": "Me",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

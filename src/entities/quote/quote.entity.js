@@ -20,4 +20,4 @@ const QuoteSchema = new Schema({
 const Quote = mongoose.model("quote", QuoteSchema);
 
 //Export model
-module.exports = Quote;
+module.exports = { Quote };

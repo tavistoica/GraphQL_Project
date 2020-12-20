@@ -1,18 +1,26 @@
 const { mergeTypeDefs, mergeResolvers } = require("@graphql-tools/merge");
-const { ApolloServer } = require("apollo-server");
+const { readFileSync } = require("fs");
 
 const quoteResolver = require("../entities/quote/quote.resolver");
-const quoteType = require("../entities/quote/quote.typedef");
+const { ApolloServer } = require("apollo-server");
 
 const resolvers = [quoteResolver];
-const types = [quoteType];
+const quoteTypeDef = readFileSync(
+  process.cwd() + "/src/entities/quote/quote.graphql",
+  "utf8"
+);
+const typeDefs = [quoteTypeDef];
 
 class Server {
   bootstrap() {
     this.apolloClient = new ApolloServer({
-      typeDefs: mergeTypeDefs(types),
+      typeDefs: mergeTypeDefs(typeDefs),
       resolvers: mergeResolvers(resolvers),
     });
+  }
+
+  async close() {
+    await this.apolloClient.stop();
   }
 }
 

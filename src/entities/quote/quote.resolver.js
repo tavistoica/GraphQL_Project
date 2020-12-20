@@ -1,14 +1,11 @@
 const { generateID } = require("../../core/helpers/generate-id.helper");
-const Quote = require("./quote.entity");
+const { Quote } = require("./quote.entity").default;
 const { QuoteNotExistsError } = require("./errors/quote-not-exists.error");
 
 module.exports = {
   Query: {
-    quotes: async () => await Quote.find({}),
-    quotesByquoter: async (_, { quoter }) => {
-      const result = await Quote.find({ quoter });
-      return result;
-    },
+    quotes: () => Quote.find({}),
+    quotesByQuoter: (_, { quoter }) => Quote.find({ quoter }),
   },
   Mutation: {
     addQuote: async (_, { input }) => {
@@ -17,20 +14,18 @@ module.exports = {
         phrase: input.phrase,
         quoter: input.quoter,
       });
-      await quote.save();
-      return quote;
+      return quote.save();
     },
     deleteQuote: async (_, { id }) => {
       const quote = await Quote.findOne({ id });
       if (!quote) throw new QuoteNotExistsError(id);
-      await quote.delete();
-      return quote;
+      return quote.delete();
     },
     editQuote: async (_, { id, input }) => {
       const quote = await Quote.findOne({ id });
       if (!quote) throw new QuoteNotExistsError(id);
-      input.phrase && (currentQuote.phrase = input.phrase);
-      input.quoter && (currentQuote.quoter = input.quoter);
+      input.phrase && (quote.phrase = input.phrase);
+      input.quoter && (quote.quoter = input.quoter);
       return quote.save();
     },
   },

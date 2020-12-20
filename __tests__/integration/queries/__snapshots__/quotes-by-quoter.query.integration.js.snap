@@ -3,9 +3,12 @@
 exports[`quotesByquoter Query use case Test 1`] = `
 Object {
   "data": Object {
-    "quotesByquoter": Array [
+    "quotesByQuoter": Array [
       Object {
-        "phrase": "O vorba mare",
+        "phrase": "If you can't explain it to a six year old, you don't understand it yourself.",
+      },
+      Object {
+        "phrase": "If you can't explain it to a six year old, you don't understand it yourself.",
       },
     ],
   },
