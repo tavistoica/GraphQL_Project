@@ -11,8 +11,6 @@ This project uses a number of open source libraries:
 - [apollo-server-test](https://www.npmjs.com/package/apollo-server-testing) - tooling to make testing easier to users of all of the apollo-server integrations
 - [graphql](https://www.npmjs.com/package/graphql) - a query language for APIs created by Facebook.
 - [graphql-tools](https://www.npmjs.com/package/graphql-tools) - a set of utilities for faster development of GraphQL Schemas
-- [graphql-import](https://www.npmjs.com/package/graphql-import) - a tool for reading .graphql extension
-- [mongodb](https://www.npmjs.com/package/mongodb) - a library used to communicate with the MongoDB database
 - [mongoose](https://www.npmjs.com/package/mongoose) - a set of utilities for generating MongoDB schemas
 - [jest]() - a javascript testing library
 - [eslint](https://eslint.org) - a static code analyser library - manually configured to work with prettier
